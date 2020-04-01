@@ -1,0 +1,11 @@
+<xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
+  <category name="ARM:BIT" colour="#4240a9" icon="robot">
+<block type="block_arm_1">
+     <value name="do_1"><shadow type="math_number"><field name="NUM">90</field></shadow></value>
+    </block>
+    <block type="block_arm_2"/>
+    <block type="block_arm_3"/>
+    <block type="block_arm_4"/>
+    <block type="block_arm_5"/>
+  </category>
+</xml>
