@@ -1,6 +1,6 @@
 {
     "name": "ARM:BIT",
-    "description": "Bộ mở rộng máy nghe nhạc",
+    "description": "Bộ mở rộng cho cánh tay robot",
     "libs": [
        
     ],
