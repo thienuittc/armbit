@@ -91,7 +91,7 @@ Blockly.Blocks['block_arm_3'] = {
     this.jsonInit(
       {
         "type": "block_arm_3",
-        "message0": "đọc tọa độ %1 cau joystick %2",
+        "message0": "đọc tọa độ %1 của joystick %2",
         "args0": [
           {
             "type": "field_dropdown",
