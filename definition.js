@@ -182,7 +182,8 @@ Blockly.Python['block_arm_2'] = function(block) {
   var code = dropdown_center+'.servo_write(89)\n';
   return code;
 };
-Blockly.Python['block_type'] = function(block) {
+Blockly.Python['block_arm_3'] = function(block) {
+  Blockly.Python.definitions_['import_yolobit'] = 'from yolobit import *';
   var dropdown_local = block.getFieldValue('local');
   var dropdown_lr = block.getFieldValue('lr');
   var x = dropdown_local*dropdown_lr;
