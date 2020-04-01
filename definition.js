@@ -3,7 +3,7 @@ Blockly.Blocks['block_arm_1'] = {
     this.jsonInit(
       {
         "type": "block_arm_1",
-        "message0": "di chuyển %1 %2 độ",
+        "message0": "di chuyển servo %1 đến góc %2 *",
         "args0": [
           {
             "type": "field_dropdown",
@@ -14,11 +14,11 @@ Blockly.Blocks['block_arm_1'] = {
                 "pin16"
               ],
               [
-                "trái",
+                "bên trái",
                 "pin14"
               ],
               [
-                "phải",
+                "bên phải",
                 "pin15"
               ],
               [
@@ -49,7 +49,7 @@ Blockly.Blocks['block_arm_2'] = {
     this.jsonInit(
       {
         "type": "block_arm_2",
-        "message0": "di chuyển %1 đến điểm giữa",
+        "message0": "di chuyển servo %1 đến góc 90*",
         "args0": [
           {
             "type": "field_dropdown",
@@ -60,11 +60,11 @@ Blockly.Blocks['block_arm_2'] = {
                 "pin16"
               ],
               [
-                "trái",
+                "bên trái",
                 "pin14"
               ],
               [
-                "phải",
+                "bên phải",
                 "pin15"
               ],
               [
@@ -91,32 +91,37 @@ Blockly.Blocks['block_arm_3'] = {
     this.jsonInit(
       {
         "type": "block_arm_3",
-        "message0": "đọc joystick %1",
+        "message0": "đọc tọa độ %1 cau joystick %2",
         "args0": [
           {
             "type": "field_dropdown",
-            "name": "center",
+            "name": "local",
             "options": [
               [
-                "JoyX trái",
-                "pin1"
+                "X",
+                "1"
               ],
               [
-                "JoyX phải",
-                "pin2"
+                "Y",
+                "10"
+              ]
+            ]
+          },
+          {
+            "type": "field_dropdown",
+            "name": "lr",
+            "options": [
+              [
+                "trái",
+                "1"
               ],
               [
-                "JoyY trái",
-                "pin11"
-              ],
-              [
-                "JoyY phải",
-                "pin12"
+                "phải",
+                "2"
               ]
             ]
           }
         ],
-        "inputsInline": true,
         "output": "Number",
         "colour": "#4240a9",
         "tooltip": "",
@@ -177,14 +182,16 @@ Blockly.Python['block_arm_2'] = function(block) {
   var code = dropdown_center+'.servo_write(89)\n';
   return code;
 };
-Blockly.Python['block_arm_3'] = function(block) {
-  Blockly.Python.definitions_['import_yolobit'] = 'from yolobit import *';
-  var dropdown_center = block.getFieldValue('center');
-  // TODO: Assemble JavaScript into code variable.
-  var code = dropdown_center+'.read_analog()';
+Blockly.Python['block_type'] = function(block) {
+  var dropdown_local = block.getFieldValue('local');
+  var dropdown_lr = block.getFieldValue('lr');
+  var x = dropdown_local*dropdown_lr;
+  // TODO: Assemble Python into code variable.
+  var code = '180*pin'+x+'.read_analog()/4096';
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.Python.ORDER_NONE];
 };
+
 Blockly.Python['block_arm_4'] = function(block) {
   Blockly.Python.definitions_['import_yolobit'] = 'from yolobit import *';
   // TODO: Assemble Python into code variable.
